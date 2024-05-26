@@ -1,0 +1,28 @@
+{
+  "name": "mrazinshaikh/laravel-migrations",
+  "description": "A standalone migration tool using laravel illuminate/database.",
+  "version": "1.0.0",
+  "require": {
+    "illuminate/database": "^11.8",
+    "illuminate/events": "^11.8",
+    "illuminate/filesystem": "^11.8",
+    "symfony/console": "^7.0",
+    "illuminate/console": "^11.8",
+    "laravel/prompts": "^0.1.22",
+    "illuminate/support": "^11.8"
+  },
+  "autoload": {
+    "psr-4": {
+      "Mrazinshaikh\\LaravelMigration\\": "src/"
+    },
+    "files": [
+      "src/helpers.php"
+    ]
+  },
+  "authors": [
+    {
+      "name": "mrazinshaikh",
+      "email": "razinshakh8732@gmail.com"
+    }
+  ]
+}
