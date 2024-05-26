@@ -3,20 +3,22 @@
 namespace Mrazinshaikh\LaravelMigration\Commands;
 
 use Illuminate\Database\Capsule\Manager as Capsule;
-use function Laravel\Prompts\{warning, confirm, outro};
+
+use function Laravel\Prompts\{confirm, outro, warning};
 
 class FreshCommand
 {
     public static function description()
     {
-        return "Drop only tables created through migrations and re-run all migrations.";
+        return 'Drop only tables created through migrations and re-run all migrations.';
     }
 
     public function handle()
     {
         // Confirm the action with the user
-        if (!confirm('Are you sure you want to drop all tables created by migrations and re-run all migrations?')) {
-            warning("Action aborted.");
+        if (! confirm('Are you sure you want to drop all tables created by migrations and re-run all migrations?')) {
+            warning('Action aborted.');
+
             return;
         }
 

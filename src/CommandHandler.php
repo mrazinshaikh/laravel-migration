@@ -3,11 +3,13 @@
 namespace Mrazinshaikh\LaravelMigration;
 
 use Laravel\Prompts\Output\ConsoleOutput;
+
 use function Laravel\Prompts\{note, warning};
 
 class CommandHandler
 {
     protected array $commands;
+
     protected ConsoleOutput $output;
 
     public function __construct(array $commands)
@@ -25,7 +27,7 @@ class CommandHandler
 
     public function showAvailableCommands()
     {
-        warning("Available commands:");
+        warning('Available commands:');
         foreach ($this->commands as $command => $class) {
             $this->output->writeln("<fg=green>$command</fg=green>\t\t" . $class::description());
         }
@@ -38,7 +40,7 @@ class CommandHandler
             $commandInstance = new $commandClass();
             $commandInstance->handle($options);
         } else {
-            warning("Command not found.");
+            warning('Command not found.');
         }
     }
 }

@@ -2,12 +2,11 @@
 
 namespace Mrazinshaikh\LaravelMigration\Commands;
 
-use \Throwable;
-use Illuminate\Support\{Arr, Str};
+use Throwable;
+use Illuminate\Support\{Arr};
 use Illuminate\Filesystem\Filesystem;
 use Laravel\Prompts\Output\ConsoleOutput;
 use Illuminate\Database\Capsule\Manager as Capsule;
-use Symfony\Component\Console\Exception\RuntimeException;
 
 use function Laravel\Prompts\info;
 
@@ -15,7 +14,7 @@ class MigrateCommand
 {
     public static function description()
     {
-        return "Run the database migrations or roll them back with --down option.";
+        return 'Run the database migrations or roll them back with --down option.';
     }
 
     public function handle($options = [])
@@ -60,7 +59,7 @@ class MigrateCommand
                     printStatus($migrationName, 'Failed', 'error');
                     $output->writeln("<fg=red>Error:</> {$e->getMessage()}");
                 }
-            } elseif (!$down && !$isMigrated) {
+            } elseif (! $down && ! $isMigrated) {
                 printStatus($migrationName, 'Running');
                 $executionTime = 0;
                 try {
@@ -92,7 +91,7 @@ class MigrateCommand
 
     protected function checkAndInstallMigrationsTable()
     {
-        if (!Capsule::schema()->hasTable('migrations')) {
+        if (! Capsule::schema()->hasTable('migrations')) {
             $installCommand = new InstallCommand();
             $installCommand->handle();
         }
@@ -104,11 +103,12 @@ class MigrateCommand
             ->where('name', $migrationName)
             ->first();
 
-        if (!$migration) {
+        if (! $migration) {
             Capsule::table('migrations')->insert([
                 'name' => $migrationName,
-                'is_migrated' => false
+                'is_migrated' => false,
             ]);
+
             return false;
         }
 

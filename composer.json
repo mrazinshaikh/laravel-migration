@@ -24,5 +24,8 @@
       "name": "mrazinshaikh",
       "email": "razinshakh8732@gmail.com"
     }
-  ]
+  ],
+  "require-dev": {
+    "laravel/pint": "^1.16"
+  }
 }

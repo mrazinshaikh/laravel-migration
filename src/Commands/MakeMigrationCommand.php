@@ -4,13 +4,14 @@ namespace Mrazinshaikh\LaravelMigration\Commands;
 
 use DateTime;
 use Illuminate\Support\Str;
+
 use function Laravel\Prompts\{info, text};
 
 class MakeMigrationCommand
 {
     public static function description()
     {
-        return "Create a new migration file.";
+        return 'Create a new migration file.';
     }
 
     public function handle()
@@ -45,7 +46,7 @@ class MakeMigrationCommand
 
         // Path to the migrations directory
         $directory = __DIR__ . '/../migrations';
-        if (!file_exists($directory)) {
+        if (! file_exists($directory)) {
             mkdir($directory, 0755, true);
         }
 

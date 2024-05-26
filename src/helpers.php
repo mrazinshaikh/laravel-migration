@@ -3,7 +3,7 @@
 use Illuminate\Support\Str;
 use Laravel\Prompts\Output\ConsoleOutput;
 
-if (!function_exists('extractTableName')) {
+if (! function_exists('extractTableName')) {
     function extractTableName(string $migrationName)
     {
         // Normalize the input to snake_case
@@ -28,7 +28,7 @@ if (!function_exists('extractTableName')) {
     }
 }
 
-if (!function_exists('getTerminalWidth')) {
+if (! function_exists('getTerminalWidth')) {
     function getTerminalWidth()
     {
         try {
@@ -38,17 +38,17 @@ if (!function_exists('getTerminalWidth')) {
         } catch (RuntimeException $e) {
             return 80;
         }
+
         return 80;
     }
 }
 
-
-if (!function_exists('printStatus')) {
+if (! function_exists('printStatus')) {
     function printStatus($migrationName, $status, $type = 'info', $executionTime = 0)
     {
         $output = new ConsoleOutput();
         $terminalWidth = getTerminalWidth();
-        $executionTimeLabel = $executionTime && $executionTime > 0 ? round($executionTime) . " MS" : '';
+        $executionTimeLabel = $executionTime && $executionTime > 0 ? round($executionTime) . ' MS' : '';
         $dots = str_repeat('.', max($terminalWidth - strlen($migrationName) - strlen($executionTimeLabel) - strlen($status) - 5, 0));
 
         $statusColor = match ($type) {
