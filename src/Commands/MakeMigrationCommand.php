@@ -4,6 +4,7 @@ namespace Mrazinshaikh\LaravelMigration\Commands;
 
 use DateTime;
 use Illuminate\Support\Str;
+use Illuminate\Filesystem\Filesystem;
 
 use function Laravel\Prompts\{info, text};
 
@@ -45,9 +46,11 @@ class MakeMigrationCommand
         $fileName = "{$datePrefix}_{$name}.php";
 
         // Path to the migrations directory
-        $directory = __DIR__ . '/../migrations';
-        if (! file_exists($directory)) {
-            mkdir($directory, 0755, true);
+        $directory = MIGRATION_FOLDER_PATH;
+        $fs = new Filesystem();
+
+        if (! $fs->exists(MIGRATION_FOLDER_PATH)) {
+            $fs->makeDirectory($directory);
         }
 
         // Replace template placeholder and write file
@@ -55,10 +58,9 @@ class MakeMigrationCommand
         $stub = file_get_contents($stubPath);
         $content = str_replace('___TABLE_NAME___', $tableName, $stub);
 
-        file_put_contents("{$directory}/{$fileName}", $content);
+        $fs->put("{$directory}/{$fileName}", $content);
 
-        $projectRoot = dirname(__DIR__, 2); // Navigate up 2 directories to reach project root
-        $userFilePath = "$projectRoot/src/migrations/{$fileName}";
+        $userFilePath = "$directory/{$fileName}";
         info("<info>Created Migration:</info> {$userFilePath}");
     }
 }

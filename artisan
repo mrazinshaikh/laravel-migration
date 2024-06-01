@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 
 require_once __DIR__ . '/bootstrap.php';
@@ -21,7 +22,7 @@ $handler = new CommandHandler($commands);
 
 /**
  * @var array $args
- * 
+ *
  * @link https://www.php.net/manual/en/reserved.variables.argv.php
  */
 $args = $argv;
@@ -29,7 +30,7 @@ array_shift($args);
 $command = $args[0] ?? null;
 array_shift($args);
 
-if (!$command || $command === 'list') {
+if (! $command || $command === 'list') {
     $handler->showPackageInfo();
     $handler->showAvailableCommands();
 } else {

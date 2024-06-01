@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Str;
+use Illuminate\Filesystem\Filesystem;
 use Laravel\Prompts\Output\ConsoleOutput;
+
+use function Laravel\Prompts\error;
 
 if (! function_exists('extractTableName')) {
     function extractTableName(string $migrationName)
@@ -60,5 +63,28 @@ if (! function_exists('printStatus')) {
 
         $status = Str::upper($status);
         $output->writeln("{$migrationName} {$dots} {$executionTimeLabel} <fg={$statusColor}>{$status}</>");
+    }
+}
+
+if (! function_exists('config')) {
+    function config(?string $path = null, ?string $fallback = null): mixed
+    {
+        $fs = new Filesystem();
+
+        if (! $fs->exists(CONFIG_PATH)) {
+            error('Config file not found on path [' . CONFIG_PATH . ']');
+            exit;
+        }
+        $config = require CONFIG_PATH;
+
+        if (! $path) {
+            return $config;
+        }
+
+        if ($path && is_array($config) && array_key_exists($path, $config)) {
+            return $config[$path] ?? $fallback;
+        }
+
+        return $fallback;
     }
 }

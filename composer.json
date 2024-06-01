@@ -1,16 +1,19 @@
 {
-  "name": "mrazinshaikh/laravel-migrations",
+  "name": "mrazinshaikh/laravel-migration",
   "description": "A standalone migration tool using laravel illuminate/database.",
   "version": "1.0.0",
+  "type": "library",
   "require": {
+    "php": ">=8.3",
     "illuminate/database": "^11.8",
     "illuminate/events": "^11.8",
     "illuminate/filesystem": "^11.8",
-    "symfony/console": "^7.0",
-    "illuminate/console": "^11.8",
     "laravel/prompts": "^0.1.22",
     "illuminate/support": "^11.8"
   },
+  "bin": [
+    "artisan"
+  ],
   "autoload": {
     "psr-4": {
       "Mrazinshaikh\\LaravelMigration\\": "src/"
@@ -27,5 +30,10 @@
   ],
   "require-dev": {
     "laravel/pint": "^1.16"
+  },
+  "scripts": {
+    "post-package-install": [
+      "Mrazinshaikh\\LaravelMigration\\MigrateServiceProvider::publishConfig"
+    ]
   }
 }

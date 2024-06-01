@@ -23,11 +23,10 @@ class MigrateCommand
         info('Migration running..');
         $this->checkAndInstallMigrationsTable();
 
-        $migrationsPath = __DIR__ . '/../migrations';
         $filesystem = new Filesystem();
 
         // Get all migration files in order
-        $migrationFiles = $filesystem->files($migrationsPath);
+        $migrationFiles = $filesystem->files(MIGRATION_FOLDER_PATH);
         $migrationFiles = Arr::sort($migrationFiles);
 
         $down = in_array('--down', $options);
