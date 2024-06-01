@@ -67,7 +67,7 @@ if (! function_exists('printStatus')) {
 }
 
 if (! function_exists('config')) {
-    function config(?string $path = null, ?string $fallback = null): mixed
+    function config(?string $key = null, mixed $fallback = null): mixed
     {
         $fs = new Filesystem();
 
@@ -77,12 +77,12 @@ if (! function_exists('config')) {
         }
         $config = require CONFIG_PATH;
 
-        if (! $path) {
+        if (! $key) {
             return $config;
         }
 
-        if ($path && is_array($config) && array_key_exists($path, $config)) {
-            return $config[$path] ?? $fallback;
+        if ($key && is_array($config) && array_key_exists($key, $config)) {
+            return $config[$key] ?? $fallback;
         }
 
         return $fallback;

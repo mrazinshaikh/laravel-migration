@@ -7,15 +7,15 @@ use Illuminate\Support\{Arr};
 use Illuminate\Filesystem\Filesystem;
 use Laravel\Prompts\Output\ConsoleOutput;
 use Illuminate\Database\Capsule\Manager as Capsule;
+use Mrazinshaikh\LaravelMigration\Commands\Interface\WithDbConnection;
 
 use function Laravel\Prompts\info;
 
-class MigrateCommand
+class MigrateCommand extends BaseCommand implements WithDbConnection
 {
-    public static function description()
-    {
-        return 'Run the database migrations or roll them back with --down option.';
-    }
+    protected string $signature = 'migrate';
+
+    public static string $description = 'Run the database migrations or roll them back with --down option.';
 
     public function handle($options = [])
     {

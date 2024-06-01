@@ -3,15 +3,15 @@
 namespace Mrazinshaikh\LaravelMigration\Commands;
 
 use Illuminate\Database\Capsule\Manager as Capsule;
+use Mrazinshaikh\LaravelMigration\Commands\Interface\WithDbConnection;
 
 use function Laravel\Prompts\{info, warning};
 
-class InstallCommand
+class InstallCommand extends BaseCommand implements WithDbConnection
 {
-    public static function description()
-    {
-        return 'Install the migrations table.';
-    }
+    protected string $signature = 'migrate:install';
+
+    public static string $description = 'Install the migrations table.';
 
     public function handle()
     {

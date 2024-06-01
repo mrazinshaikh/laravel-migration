@@ -8,12 +8,11 @@ use Illuminate\Filesystem\Filesystem;
 
 use function Laravel\Prompts\{info, text};
 
-class MakeMigrationCommand
+class MakeMigrationCommand extends BaseCommand
 {
-    public static function description()
-    {
-        return 'Create a new migration file.';
-    }
+    protected string $signature = 'make:migration';
+
+    public static string $description = 'Create a new migration file.';
 
     public function handle()
     {

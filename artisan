@@ -4,21 +4,20 @@
 require_once __DIR__ . '/bootstrap.php';
 
 use Mrazinshaikh\LaravelMigration\CommandHandler;
-use Mrazinshaikh\LaravelMigration\Commands\FreshCommand;
-use Mrazinshaikh\LaravelMigration\Commands\InstallCommand;
-use Mrazinshaikh\LaravelMigration\Commands\MigrateCommand;
-use Mrazinshaikh\LaravelMigration\Commands\MakeMigrationCommand;
+use Mrazinshaikh\LaravelMigration\Commands\{ ConfigPublishCommand, FreshCommand, InstallCommand, MakeMigrationCommand, MigrateCommand};
 
 // Define the available commands
 $commands = [
-    'migrate' => MigrateCommand::class,
-    'migrate:fresh' => FreshCommand::class,
-    'migrate:install' => InstallCommand::class,
-    'make:migration' => MakeMigrationCommand::class,
+    MigrateCommand::class,
+    FreshCommand::class,
+    InstallCommand::class,
+    MakeMigrationCommand::class,
+    ConfigPublishCommand::class,
 ];
 
 // Instantiate the command handler
-$handler = new CommandHandler($commands);
+$handler = new CommandHandler();
+$handler->registerCommands($commands);
 
 /**
  * @var array $args

@@ -2,19 +2,21 @@
 
 namespace Mrazinshaikh\LaravelMigration;
 
+use ReflectionClass;
 use Laravel\Prompts\Output\ConsoleOutput;
+use Mrazinshaikh\LaravelMigration\Commands\BaseCommand;
+use Mrazinshaikh\LaravelMigration\Commands\Interface\WithDbConnection;
 
 use function Laravel\Prompts\{note, warning};
 
 class CommandHandler
 {
-    protected array $commands;
+    protected array $commands = [];
 
     protected ConsoleOutput $output;
 
-    public function __construct(array $commands)
+    public function __construct()
     {
-        $this->commands = $commands;
         $this->output = new ConsoleOutput();
     }
 
@@ -29,8 +31,23 @@ class CommandHandler
     {
         warning('Available commands:');
         foreach ($this->commands as $command => $class) {
-            $this->output->writeln("<fg=green>$command</fg=green>\t\t" . $class::description());
+            $this->output->writeln("<fg=green>$command</fg=green>\t\t" . $class::$description);
         }
+    }
+
+    public function registerCommands(array $commands)
+    {
+        $commandsSign = [];
+        foreach ($commands as $class) {
+            $r = new \ReflectionClass($class);
+            if (! $r->isSubclassOf(BaseCommand::class)) {
+                continue;
+            }
+            $signature = ($r->getProperty('signature')->getValue(new $class()));
+            $commandsSign[$signature] = $class;
+        }
+
+        $this->commands = $commandsSign;
     }
 
     public function executeCommand(string $command, array $options)
@@ -38,6 +55,12 @@ class CommandHandler
         if (isset($this->commands[$command])) {
             $commandClass = $this->commands[$command];
             $commandInstance = new $commandClass();
+
+            $ref = new ReflectionClass($commandClass);
+            if (in_array(WithDbConnection::class, $ref->getInterfaceNames())) {
+                ConnectionManager::init();
+            }
+
             $commandInstance->handle($options);
         } else {
             warning('Command not found.');

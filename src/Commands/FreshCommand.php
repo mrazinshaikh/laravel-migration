@@ -3,15 +3,15 @@
 namespace Mrazinshaikh\LaravelMigration\Commands;
 
 use Illuminate\Database\Capsule\Manager as Capsule;
+use Mrazinshaikh\LaravelMigration\Commands\Interface\WithDbConnection;
 
 use function Laravel\Prompts\{confirm, outro, warning};
 
-class FreshCommand
+class FreshCommand extends BaseCommand implements WithDbConnection
 {
-    public static function description()
-    {
-        return 'Drop only tables created through migrations and re-run all migrations.';
-    }
+    protected string $signature = 'migrate:fresh';
+
+    public static string $description = 'Drop only tables created through migrations and re-run all migrations.';
 
     public function handle()
     {
