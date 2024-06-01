@@ -3,8 +3,9 @@
 use Illuminate\Support\Str;
 use Illuminate\Filesystem\Filesystem;
 use Laravel\Prompts\Output\ConsoleOutput;
+use Mrazinshaikh\LaravelMigration\Commands\ConfigPublishCommand;
 
-use function Laravel\Prompts\error;
+use function Laravel\Prompts\{confirm, error};
 
 if (! function_exists('extractTableName')) {
     function extractTableName(string $migrationName)
@@ -73,6 +74,10 @@ if (! function_exists('config')) {
 
         if (! $fs->exists(CONFIG_PATH)) {
             error('Config file not found on path [' . CONFIG_PATH . ']');
+            if (confirm('Run config:publish command to publish config file?', default: false)) {
+                (new ConfigPublishCommand)->handle();
+                exit;
+            }
             exit;
         }
         $config = require CONFIG_PATH;

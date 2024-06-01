@@ -29,6 +29,7 @@ class ConfigPublishCommand extends BaseCommand
                 $filesystem->makeDirectory($dir);
             }
             $filesystem->copy($source, $destination);
+            info("Config file created. [$destination]");
         } else {
             warning("Config file already exists [$destination].");
             info('use --force option to publish again.');

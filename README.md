@@ -21,6 +21,8 @@ A standalone migration tool using laravel illuminate/database.
     - expose artisan to vendor/bin folder. rename to migration.
     - attempt to use illuminate\database Create migration '\Illuminate\Database\Migrations\MigrationCreator'
 
+- [ ] Add config:show command, to show parsed config.
+
 - [ ] Extend migrate command to run specific migration file using --path option.
 
 - [ ] Install [`nunomaduro/termwind`](https://github.com/nunomaduro/termwind)
