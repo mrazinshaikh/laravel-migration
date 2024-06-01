@@ -17,8 +17,8 @@ A standalone migration tool using laravel illuminate/database.
 
 ### Roadmap
 
-- [ ] Make this work in a way so migrations folder exists in end user root directory (customizable in future.)
-    - expose artisan to vendor/bin folder.
+- [x] Make this work in a way so migrations folder exists in end user root directory (customizable in future.)
+    - expose artisan to vendor/bin folder. rename to migration.
 
 - [ ] Extend migrate command to run specific migration file using --path option.
 
