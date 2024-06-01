@@ -39,7 +39,7 @@ class CommandHandler
     {
         $commandsSign = [];
         foreach ($commands as $class) {
-            $r = new \ReflectionClass($class);
+            $r = new ReflectionClass($class);
             if (! $r->isSubclassOf(BaseCommand::class)) {
                 continue;
             }
