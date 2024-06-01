@@ -11,6 +11,7 @@ A standalone migration tool using laravel illuminate/database.
 | migrate:fresh   	| Drop only tables created through migrations and re-run all migrations. 	|
 | migrate:install 	| Install the migrations table.                                          	|
 | make:migration  	| Create a new migration file.                                           	|
+| config:publish  	| Publish config file..                                                 	|
 
 
 
