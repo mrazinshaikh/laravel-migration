@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/vendor/autoload.php';
+require 'vendor/autoload.php';
 
 $basePath = dirname(__DIR__, 3);
 // TODO: Allow to be configurable from config.

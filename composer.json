@@ -1,8 +1,9 @@
 {
   "name": "mrazinshaikh/laravel-migration",
   "description": "A standalone migration tool using laravel illuminate/database.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "library",
+  "license": "MIT",
   "require": {
     "php": ">=8.3",
     "illuminate/database": "^11.8",
@@ -30,10 +31,5 @@
   ],
   "require-dev": {
     "laravel/pint": "^1.16"
-  },
-  "scripts": {
-    "post-package-install": [
-      "Mrazinshaikh\\LaravelMigration\\MigrateServiceProvider::publishConfig"
-    ]
   }
 }
