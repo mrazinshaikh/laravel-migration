@@ -3,8 +3,8 @@
 namespace Mrazinshaikh\LaravelMigration\Commands;
 
 use DateTime;
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
+use Illuminate\Filesystem\Filesystem;
 
 use function Laravel\Prompts\{info, text};
 
@@ -22,7 +22,7 @@ class MakeMigrationCommand extends BaseCommand
             required: true,
             validate: fn (string $value) => match (true) {
                 empty(trim($value)) => 'Migration file name is required',
-                default             => null
+                default => null
             }
         );
         $name = trim($name);
@@ -35,7 +35,7 @@ class MakeMigrationCommand extends BaseCommand
             default: $defaultTableName,
             validate: fn (string $value) => match (true) {
                 empty(trim($value)) => 'Table name is required',
-                default             => null
+                default => null
             }
         );
 
@@ -48,12 +48,12 @@ class MakeMigrationCommand extends BaseCommand
         $directory = MIGRATION_FOLDER_PATH;
         $fs = new Filesystem();
 
-        if (!$fs->exists(MIGRATION_FOLDER_PATH)) {
+        if (! $fs->exists(MIGRATION_FOLDER_PATH)) {
             $fs->makeDirectory($directory);
         }
 
         // Replace template placeholder and write file
-        $stubPath = __DIR__.'/../stubs/migration.stub';
+        $stubPath = __DIR__ . '/../stubs/migration.stub';
         $stub = file_get_contents($stubPath);
         $content = str_replace('___TABLE_NAME___', $tableName, $stub);
 

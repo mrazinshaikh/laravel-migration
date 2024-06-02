@@ -2,10 +2,10 @@
 
 namespace Mrazinshaikh\LaravelMigration;
 
+use ReflectionClass;
 use Laravel\Prompts\Output\ConsoleOutput;
 use Mrazinshaikh\LaravelMigration\Commands\BaseCommand;
 use Mrazinshaikh\LaravelMigration\Commands\Interface\WithDbConnection;
-use ReflectionClass;
 
 use function Laravel\Prompts\{note, warning};
 
@@ -22,7 +22,7 @@ class CommandHandler
 
     public function showPackageInfo()
     {
-        $composer = json_decode(file_get_contents(__DIR__.'/../composer.json'), true);
+        $composer = json_decode(file_get_contents(__DIR__ . '/../composer.json'), true);
         $this->output->writeln("<fg=white>{$composer['name']}</fg=white> <fg=green>v{$composer['version']}</fg=green>");
         note($composer['description']);
     }
@@ -31,7 +31,7 @@ class CommandHandler
     {
         warning('Available commands:');
         foreach ($this->commands as $command => $class) {
-            $this->output->writeln("<fg=green>$command</fg=green>\t\t".$class::$description);
+            $this->output->writeln("<fg=green>$command</fg=green>\t\t" . $class::$description);
         }
     }
 
@@ -40,7 +40,7 @@ class CommandHandler
         $commandsSign = [];
         foreach ($commands as $class) {
             $r = new ReflectionClass($class);
-            if (!$r->isSubclassOf(BaseCommand::class)) {
+            if (! $r->isSubclassOf(BaseCommand::class)) {
                 continue;
             }
             $signature = $r->getProperty('signature')->getValue(new $class());

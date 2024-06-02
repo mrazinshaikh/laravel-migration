@@ -2,12 +2,12 @@
 
 namespace Mrazinshaikh\LaravelMigration\Commands;
 
-use Illuminate\Database\Capsule\Manager as Capsule;
-use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\{Arr};
-use Laravel\Prompts\Output\ConsoleOutput;
-use Mrazinshaikh\LaravelMigration\Commands\Interface\WithDbConnection;
 use Throwable;
+use Illuminate\Support\{Arr};
+use Illuminate\Filesystem\Filesystem;
+use Laravel\Prompts\Output\ConsoleOutput;
+use Illuminate\Database\Capsule\Manager as Capsule;
+use Mrazinshaikh\LaravelMigration\Commands\Interface\WithDbConnection;
 
 use function Laravel\Prompts\info;
 
@@ -59,7 +59,7 @@ class MigrateCommand extends BaseCommand implements WithDbConnection
                     printStatus($migrationName, 'Failed', 'error');
                     $output->writeln("<fg=red>Error:</> {$e->getMessage()}");
                 }
-            } elseif (!$down && !$isMigrated) {
+            } elseif (! $down && ! $isMigrated) {
                 printStatus($migrationName, 'Running');
                 $executionTime = 0;
 
@@ -92,7 +92,7 @@ class MigrateCommand extends BaseCommand implements WithDbConnection
 
     protected function checkAndInstallMigrationsTable()
     {
-        if (!Capsule::schema()->hasTable('migrations')) {
+        if (! Capsule::schema()->hasTable('migrations')) {
             $installCommand = new InstallCommand();
             $installCommand->handle();
         }
@@ -104,9 +104,9 @@ class MigrateCommand extends BaseCommand implements WithDbConnection
             ->where('name', $migrationName)
             ->first();
 
-        if (!$migration) {
+        if (! $migration) {
             Capsule::table('migrations')->insert([
-                'name'        => $migrationName,
+                'name' => $migrationName,
                 'is_migrated' => false,
             ]);
 

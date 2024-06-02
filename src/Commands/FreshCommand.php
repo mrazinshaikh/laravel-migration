@@ -16,7 +16,7 @@ class FreshCommand extends BaseCommand implements WithDbConnection
     public function handle()
     {
         // Confirm the action with the user
-        if (!confirm('Are you sure you want to drop all tables created by migrations and re-run all migrations?')) {
+        if (! confirm('Are you sure you want to drop all tables created by migrations and re-run all migrations?')) {
             warning('Action aborted.');
 
             return;
