@@ -5,7 +5,7 @@
   "type": "library",
   "license": "MIT",
   "require": {
-    "php": ">=8.3",
+    "php": "^8.2",
     "illuminate/database": "^11.8",
     "illuminate/events": "^11.8",
     "illuminate/filesystem": "^11.8",
