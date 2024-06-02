@@ -17,7 +17,7 @@ class InstallCommand extends BaseCommand implements WithDbConnection
     {
         warning('Checking if the migrations table exists...');
 
-        if (! Capsule::schema()->hasTable('migrations')) {
+        if (!Capsule::schema()->hasTable('migrations')) {
             Capsule::schema()->create('migrations', function ($table) {
                 $table->increments('id');
                 $table->string('name');

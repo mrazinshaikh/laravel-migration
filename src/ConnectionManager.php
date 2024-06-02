@@ -8,7 +8,7 @@ class ConnectionManager
 {
     public static function init()
     {
-        $capsule = new Capsule;
+        $capsule = new Capsule();
         $capsule->addConnection(config('connection', []));
 
         // Set the event dispatcher used by Eloquent models... (optional)
