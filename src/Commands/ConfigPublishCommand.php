@@ -18,8 +18,8 @@ class ConfigPublishCommand extends BaseCommand
         $basePath = dirname(__DIR__, 5);
 
         $filesystem = new Filesystem();
-        $destination = $basePath . '/config/laravel-migration.php';
-        $source = __DIR__ . '/../config.php';
+        $destination = $basePath.'/config/laravel-migration.php';
+        $source = __DIR__.'/../config.php';
 
         $force = in_array('--force', $options);
 

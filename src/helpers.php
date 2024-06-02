@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Str;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Str;
 use Laravel\Prompts\Output\ConsoleOutput;
 use Mrazinshaikh\LaravelMigration\Commands\ConfigPublishCommand;
 
@@ -52,7 +52,7 @@ if (! function_exists('printStatus')) {
     {
         $output = new ConsoleOutput();
         $terminalWidth = getTerminalWidth();
-        $executionTimeLabel = $executionTime && $executionTime > 0 ? round($executionTime) . ' MS' : '';
+        $executionTimeLabel = $executionTime && $executionTime > 0 ? round($executionTime).' MS' : '';
         $dots = str_repeat('.', max($terminalWidth - strlen($migrationName) - strlen($executionTimeLabel) - strlen($status) - 5, 0));
 
         $statusColor = match ($type) {
@@ -73,7 +73,7 @@ if (! function_exists('config')) {
         $fs = new Filesystem();
 
         if (! $fs->exists(CONFIG_PATH)) {
-            error('Config file not found on path [' . CONFIG_PATH . ']');
+            error('Config file not found on path ['.CONFIG_PATH.']');
             if (confirm('Run config:publish command to publish config file?', default: false)) {
                 (new ConfigPublishCommand())->handle();
                 exit;

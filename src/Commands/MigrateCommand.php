@@ -2,12 +2,12 @@
 
 namespace Mrazinshaikh\LaravelMigration\Commands;
 
-use Throwable;
-use Illuminate\Support\{Arr};
-use Illuminate\Filesystem\Filesystem;
-use Laravel\Prompts\Output\ConsoleOutput;
 use Illuminate\Database\Capsule\Manager as Capsule;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\{Arr};
+use Laravel\Prompts\Output\ConsoleOutput;
 use Mrazinshaikh\LaravelMigration\Commands\Interface\WithDbConnection;
+use Throwable;
 
 use function Laravel\Prompts\info;
 

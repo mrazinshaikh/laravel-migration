@@ -3,8 +3,8 @@
 namespace Mrazinshaikh\LaravelMigration\Commands;
 
 use DateTime;
-use Illuminate\Support\Str;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Str;
 
 use function Laravel\Prompts\{info, text};
 
@@ -53,7 +53,7 @@ class MakeMigrationCommand extends BaseCommand
         }
 
         // Replace template placeholder and write file
-        $stubPath = __DIR__ . '/../stubs/migration.stub';
+        $stubPath = __DIR__.'/../stubs/migration.stub';
         $stub = file_get_contents($stubPath);
         $content = str_replace('___TABLE_NAME___', $tableName, $stub);
 

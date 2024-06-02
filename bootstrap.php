@@ -7,9 +7,9 @@ $basePath = dirname(__DIR__, 3);
 $migrationsFolderName = '/migrations';
 
 if (! defined('MIGRATION_FOLDER_PATH')) {
-    define('MIGRATION_FOLDER_PATH', $basePath . $migrationsFolderName);
+    define('MIGRATION_FOLDER_PATH', $basePath.$migrationsFolderName);
 }
 
 if (! defined('CONFIG_PATH')) {
-    define('CONFIG_PATH', $basePath . '/config/laravel-migration.php');
+    define('CONFIG_PATH', $basePath.'/config/laravel-migration.php');
 }
