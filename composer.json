@@ -1,11 +1,11 @@
 {
   "name": "mrazinshaikh/laravel-migration",
   "description": "A standalone migration tool using laravel illuminate/database.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "library",
   "license": "MIT",
   "require": {
-    "php": ">=8.3",
+    "php": "^8.2",
     "illuminate/database": "^11.8",
     "illuminate/events": "^11.8",
     "illuminate/filesystem": "^11.8",
@@ -13,7 +13,7 @@
     "illuminate/support": "^11.8"
   },
   "bin": [
-    "artisan"
+    "laravel-migration"
   ],
   "autoload": {
     "psr-4": {
