@@ -3,12 +3,12 @@
 A standalone migration tool using laravel illuminate/database.
 
 <p>
-    <a href="https://github.com/mrazinshaikh/laravel-migration/actions?query=workflow%3ATest">
+    <!-- <a href="https://github.com/mrazinshaikh/laravel-migration/actions?query=workflow%3ATest">
         <img src="https://github.com/mrazinshaikh/laravel-migration/workflows/Test/badge.svg" alt="Test Actions status">
     </a>
     <a href="https://github.com/mrazinshaikh/laravel-migration/actions?query=workflow%3ALint">
         <img src="https://github.com/mrazinshaikh/laravel-migration/workflows/Lint/badge.svg" alt="Lint Actions status">
-    </a>
+    </a> -->
     <a href="https://github.styleci.io/repos/806113641">
         <img src="https://github.styleci.io/repos/806113641/shield?branch=main" alt="StyleCI">
     </a>
