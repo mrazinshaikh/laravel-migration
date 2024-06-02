@@ -9,6 +9,9 @@ A standalone migration tool using laravel illuminate/database.
     <a href="https://github.com/mrazinshaikh/laravel-migration/actions?query=workflow%3ALint">
         <img src="https://github.com/mrazinshaikh/laravel-migration/workflows/Lint/badge.svg" alt="Lint Actions status">
     </a> -->
+    <a href="https://packagist.org/packages/mrazinshaikh/laravel-migration">
+        <img src="https://img.shields.io/packagist/v/mrazinshaikh/laravel-migration" alt="Packagist">
+    </a>
     <a href="https://github.styleci.io/repos/806113641">
         <img src="https://github.styleci.io/repos/806113641/shield?branch=main" alt="StyleCI">
     </a>
